@@ -12,16 +12,16 @@ load_dotenv(verbose=True)
 userid = os.getenv("USERID")
 password = os.getenv("PASSWORD")
 
+sid = os.getenv("SID")
+orgcode = os.getenv("ORGCODE")
+
 
 # load driver
 driver = webdriver.Chrome('./chromedriver')
 driver.implicitly_wait(15)
 
-gomdori = 'https://v-search.nid.naver.com/reservation/standby?orgCd=12328073&sid=36477105'
-sungmo = 'https://v-search.nid.naver.com/reservation/standby?orgCd=11100338&sid=12928910'
-
 # open site
-driver.get(sungmo)
+driver.get(f'https://v-search.nid.naver.com/reservation/standby?orgCd={orgcode}&sid={sid}')
 time.sleep(1)
 
 id_element = driver.find_element_by_css_selector("#id")
