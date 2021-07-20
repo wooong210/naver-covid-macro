@@ -51,6 +51,7 @@ while (True):
 	vactypes = driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div[2]/div[1]/div[1]/div/div[1]/ul").find_elements_by_css_selector(".li")
 	print(vactypes)
 	if (vactypes):
+		# driver.get_screenshot_as_file(f"{time.ctime()}.png") 
 		vact = vactypes.find_elements_by_css_selector(".li")
 		vact[0].click()
 		driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div[2]/div[2]/div/div/label")
