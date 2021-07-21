@@ -7,13 +7,18 @@ import time
 import os
 import random
 import pyperclip
+import simpleaudio as sa
+
+def ring_a_bell():
+    wave_obj = sa.WaveObject.from_wave_file('./ring.wav')
+    wave_obj.play()
 
 load_dotenv(verbose=True)
 userid = os.getenv("USERID")
 password = os.getenv("PASSWORD")
 
-sid = os.getenv("SID")
-orgcode = os.getenv("ORGCODE")
+sid = os.getenv("SID2")
+orgcode = os.getenv("ORGCODE2")
 
 
 # load driver
@@ -48,16 +53,19 @@ driver.find_element_by_css_selector("#ncert > span").click()
 time.sleep(10)
 
 while (True):
-	vactypes = driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div[2]/div[1]/div[1]/div/div[1]/ul").find_elements_by_css_selector(".li")
-	print(vactypes)
-	if (vactypes):
-		# driver.get_screenshot_as_file(f"{time.ctime()}.png") 
-		vact = vactypes.find_elements_by_css_selector(".li")
-		vact[0].click()
-		driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div[2]/div[2]/div/div/label")
-		driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div[2]/a")
-	time.sleep(1)
-	driver.refresh()
+	vactypes = driver.find_element_by_class_name('radio_list')
+	print(vactypes.is_displayed())
+	if (vactypes.is_displayed()):
+		driver.get_screenshot_as_file(f"{time.ctime()}.png")
+		vactypes[0].click()
+		driver.find_element_by_class_name('label_check')
+		driver.find_element_by_id("reservation_confirm")
+		ring_a_bell()
+	time.sleep(2)
+	# driver.refresh()
+	driver.execute_script("location.reload()")
+
+
 
 
 time.sleep(10000)
