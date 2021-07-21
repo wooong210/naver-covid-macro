@@ -56,8 +56,7 @@ while (True):
 	vactypes = driver.find_element_by_class_name('radio_list')
 	print(vactypes.is_displayed())
 	if (vactypes.is_displayed()):
-		driver.get_screenshot_as_file(f"{time.ctime()}.png")
-		vactypes[0].click()
+		vactypes.click()
 		driver.find_element_by_class_name('label_check')
 		driver.find_element_by_id("reservation_confirm")
 		ring_a_bell()
