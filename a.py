@@ -54,12 +54,15 @@ time.sleep(10)
 
 while (True):
 	vactypes = driver.find_element_by_class_name('radio_list')
-	print(vactypes.is_displayed())
+	print(vactypes.is_displayed(), time.time())
 	if (vactypes.is_displayed()):
 		vactypes.click()
+		time.sleep(0.05)
 		driver.find_element_by_class_name('label_check')
+		time.sleep(0.05)
 		driver.find_element_by_id("reservation_confirm")
 		ring_a_bell()
+		break
 	time.sleep(2)
 	# driver.refresh()
 	driver.execute_script("location.reload()")
