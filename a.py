@@ -17,8 +17,8 @@ load_dotenv(verbose=True)
 userid = os.getenv("USERID")
 password = os.getenv("PASSWORD")
 
-sid = os.getenv("SID2")
-orgcode = os.getenv("ORGCODE2")
+sid = os.getenv("SID")
+orgcode = os.getenv("ORGCODE")
 
 
 # load driver
